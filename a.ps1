@@ -22,7 +22,7 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/in
 choco feature enable -n=allowGlobalConfirmation
 
 # Install SpaceMonger
-Invoke-WebRequest -Uri http://exonetworks.net/apps/spacemonger.exe -OutFile C:\spacemonger.exe
+Invoke-WebRequest -Uri https://github.com/bobbywaz/public/raw/main/spacemonger.exe -OutFile C:\spacemonger.exe
 
 # Expand system tray always
 New-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer" -Name "EnableAutoTray" -PropertyType DWORD -Value 0 -Force | Out-Null
