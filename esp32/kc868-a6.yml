@@ -1,5 +1,5 @@
 esphome:
-  name: my_esp32
+  name: ethelhome
 
 esp32:
   board: esp32dev
@@ -9,9 +9,17 @@ esp32:
 esp32_ble_tracker:  # Enables BLE tracking
 bluetooth_proxy:    # Enables Bluetooth proxy for Home Assistant
 captive_portal:
+web_server:
+  port: 80
+  auth:
+    username: "b"
+    password: "8"
+  css_url: "https://files.bobbyw.name/esphome.css"
+  include_internal: true
 
 ota:
   password: "iliketurtles"
+  platform: esphome
 
 wifi:
   ssid: "Good Job Bob's Orphanage"
@@ -21,6 +29,8 @@ wifi:
     password: "iliketurtles"
 
 api:
+  encryption:
+    key: "sUPvOWVhYSPM4ze1hwCm7kqvY9rSvDmKcPA3f0pCDy0="
 
 uart:
   - id: rs485
@@ -56,42 +66,42 @@ time:
 
 binary_sensor:
   - platform: gpio
-    name: "Lights Left"
+    name: "Lights Driver Side"
     pin:
       pcf8574: inputs
       number: 0
       mode: INPUT
       inverted: true
   - platform: gpio
-    name: "Lights Right"
+    name: "Lights Passenger Side"
     pin:
       pcf8574: inputs
       number: 1
       mode: INPUT
       inverted: true
   - platform: gpio
-    name: "Outside Light"
+    name: "LED Light Bar"
     pin:
       pcf8574: inputs
       number: 2
       mode: INPUT
       inverted: true
   - platform: gpio
-    name: "KC868-A6-IN-4"
+    name: "Seat Heater Driver Side"
     pin:
       pcf8574: inputs
       number: 3
       mode: INPUT
       inverted: true
   - platform: gpio
-    name: "KC868-A6-IN-5"
+    name: "Seat Heater Passenger Side"
     pin:
       pcf8574: inputs
       number: 4
       mode: INPUT
       inverted: true
   - platform: gpio
-    name: "KC868-A6-IN-6"
+    name: "Refrigerator"
     pin:
       pcf8574: inputs
       number: 5
@@ -100,7 +110,7 @@ binary_sensor:
 
 switch:
   - platform: gpio
-    name: "KC868-A6-RELAY-1"
+    name: "Lights Left"
     id: relay_1
     pin:
       pcf8574: outputs
@@ -108,7 +118,7 @@ switch:
       mode: OUTPUT
       inverted: true
   - platform: gpio
-    name: "KC868-A6-RELAY-2"
+    name: "Lights Right"
     id: relay_2
     pin:
       pcf8574: outputs
@@ -116,7 +126,7 @@ switch:
       mode: OUTPUT
       inverted: true
   - platform: gpio
-    name: "KC868-A6-RELAY-3"
+    name: "LED Light Bar"
     id: relay_3
     pin:
       pcf8574: outputs
@@ -124,7 +134,7 @@ switch:
       mode: OUTPUT
       inverted: true
   - platform: gpio
-    name: "KC868-A6-RELAY-4"
+    name: "Seat Heater Driver Side"
     id: relay_4
     pin:
       pcf8574: outputs
@@ -132,7 +142,7 @@ switch:
       mode: OUTPUT
       inverted: true
   - platform: gpio
-    name: "KC868-A6-RELAY-5"
+    name: "Seat Heater Passenger Side"
     id: relay_5
     pin:
       pcf8574: outputs
@@ -140,10 +150,48 @@ switch:
       mode: OUTPUT
       inverted: true
   - platform: gpio
-    name: "KC868-A6-RELAY-6"
+    name: "Refrigerator"
     id: relay_6
     pin:
       pcf8574: outputs
       number: 5
       mode: OUTPUT
       inverted: true
+sensor:
+  - platform: adc
+    pin: GPIO34            # or whichever ADC pin you're using
+    name: "Van Starter Battery Voltage"
+    attenuation: 12db
+    update_interval: 30s
+    filters:
+      - multiply: 5.7
+
+  - platform: adc
+    pin: GPIO33            # or whichever ADC pin you're using
+    name: "Van Leisure Battery Voltage"
+    attenuation: 11db
+    update_interval: 30s
+    filters:
+      - multiply: 5.7       
+ 
+  - platform: dht
+    pin: GPIO12
+    model: DHT22
+    temperature:
+      name: "Van Temperature"
+      id: van_temp
+    humidity:
+      name: "Van Humidity"
+      id: van_humidity
+    update_interval: 120s
+    
+  - platform: dht
+    pin: GPIO13
+    model: DHT22
+    temperature:
+      name: "Refrigerator Temperature"
+      id: refrigerator_temp
+    humidity:
+      name: "Refrigerator Humidity"
+      id: refrigerator_humitity
+    update_interval: 120s

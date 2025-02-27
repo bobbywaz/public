@@ -1,0 +1,50 @@
+GPIO Pin	Default Function on KC868-A6	Can Be Used for Custom IO?
+GPIO0	BOOT button	Yes (with caution, as it affects boot).
+GPIO2	Available	Yes
+GPIO4	I²C SDA	Yes (if not using I²C).
+GPIO5	Optional SPI CS	Yes
+GPIO12	Available	Yes
+GPIO13	Available	Yes
+GPIO14	I²C SCL	Yes (if not using I²C).
+GPIO15	I²C SCL (with strapping warning)	Yes, but avoid during boot issues.
+GPIO16	UART RX (RS232)	No (used for RS232).
+GPIO17	UART TX (RS232)	No (used for RS232).
+GPIO18	SPI CLK	Yes (if not using SPI).
+GPIO19	SPI MISO	Yes (if not using SPI).
+GPIO21	Available	Yes
+GPIO22	Available	Yes
+GPIO23	SPI MOSI	Yes (if not using SPI).
+GPIO25	Available	Yes
+GPIO26	Available	Yes
+GPIO27	UART TX (RS485)	No (used for RS485).
+GPIO32	ADC (Voltage Sensor)	Yes (if analog input is needed).
+GPIO33	ADC (Voltage Sensor)	Yes (if analog input is needed).
+GPIO34	ADC (Voltage Sensor)	Yes (input-only).
+GPIO35	ADC (Voltage Sensor)	Yes (input-only).
+GPIO36	ADC (Voltage Sensor)	Yes (input-only).
+GPIO39	ADC (Voltage Sensor)	Yes (input-only).
+
+
+
+
+
+DI1	GPIO39	Digital Input 1
+DI2	GPIO36	Digital Input 2
+DI3	GPIO35	Digital Input 3
+DI4	GPIO34	Digital Input 4
+DI5	GPIO33	Digital Input 5 / ADC input
+DI6	GPIO32	Digital Input 6 / ADC input
+DA1	GPIO25	Analog Output (DAC1)
+DA2	GPIO26	Analog Output (DAC2)
+A1 (AI1)	GPIO39	Analog Input 1
+A2 (AI2)	GPIO36	Analog Input 2
+A3 (AI3)	GPIO35	Analog Input 3
+A4 (AI4)	GPIO34	Analog Input 4
+IIC (I²C)	SDA: GPIO4	I²C Data Line (shared for OLED)
+SCL: GPIO15	I²C Clock Line (shared for OLED)
+RS232 RX	GPIO16	UART RX for RS232 communication
+RS232 TX	GPIO17	UART TX for RS232 communication
+RS485 A	GPIO27	UART TX for RS485 communication
+RS485 B	GPIO14	UART RX for RS485 communication
+Relays 1-6	Internal	Controlled by GPIOs (relays are managed by the firmware).
+3.3V/GND	Power	Power and ground connections for peripherals.
