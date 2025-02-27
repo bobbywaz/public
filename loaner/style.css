@@ -1,0 +1,136 @@
+/* Basic Page Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+    background-color: #f8f9fa; /* Light gray background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #343a40; /* Dark gray text */
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center;
+    max-width: 800px; /* Limit container width */
+    width: 100%;
+}
+
+h1 {
+    color: #28a745; /* Green heading */
+    margin-bottom: 20px;
+}
+
+/* Table Styling */
+#loanTable {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#loanTable th, #loanTable td {
+    border: 1px solid #dee2e6; /* Light gray border */
+    padding: 12px;
+    text-align: left; /* Align text to the left */
+}
+
+#loanTable th {
+    background-color: #e9ecef; /* Very light gray header */
+    font-weight: 600; /* Slightly bolder header text */
+}
+
+/* Modal Styling */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.5); 
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Fixed modal width */
+}
+
+.close-button {
+    color: #6c757d; /* Gray close button */
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #343a40; /* Darker gray on hover */
+    text-decoration: none;
+}
+
+/* Form Styling */
+#addEntryForm label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 500; /* Slightly bolder labels */
+}
+
+#addEntryForm input[type="text"],
+#addEntryForm input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da; /* Light gray border */
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.radio-group {
+    margin-top: 10px;
+    text-align: left; 
+}
+
+.radio-group label {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+/* Button Styling */
+button {
+    background-color: #28a745; /* Green button */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Styling for amounts owed */
+.green {
+    color: #28a745; /* Green for owed to you */
+}
+
+.red {
+    color: #dc3545; /* Red for owed to others */
+}

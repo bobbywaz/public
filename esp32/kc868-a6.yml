@@ -1,0 +1,149 @@
+esphome:
+  name: my_esp32
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+esp32_ble_tracker:  # Enables BLE tracking
+bluetooth_proxy:    # Enables Bluetooth proxy for Home Assistant
+captive_portal:
+
+ota:
+  password: "iliketurtles"
+
+wifi:
+  ssid: "Good Job Bob's Orphanage"
+  password: "iliketurtles"
+  ap:
+    ssid: "Ethel Hotspot"
+    password: "iliketurtles"
+
+api:
+
+uart:
+  - id: rs485
+    tx_pin: GPIO27
+    rx_pin: GPIO14
+    baud_rate: 9600
+  - id: rs232
+    tx_pin: GPIO17
+    rx_pin: GPIO16
+    baud_rate: 9600
+
+spi:
+  clk_pin: GPIO18
+  mosi_pin: GPIO23
+  miso_pin: GPIO19
+  # cs pin: GPIO5
+
+i2c:
+  sda: GPIO4
+  scl:
+    number: GPIO15
+    ignore_strapping_warning: true
+
+pcf8574:
+  - id: inputs
+    address: 0x22
+  - id: outputs
+    address: 0x24
+
+time:
+  - platform: ds1307
+    id: rtc_time
+
+binary_sensor:
+  - platform: gpio
+    name: "Lights Left"
+    pin:
+      pcf8574: inputs
+      number: 0
+      mode: INPUT
+      inverted: true
+  - platform: gpio
+    name: "Lights Right"
+    pin:
+      pcf8574: inputs
+      number: 1
+      mode: INPUT
+      inverted: true
+  - platform: gpio
+    name: "Outside Light"
+    pin:
+      pcf8574: inputs
+      number: 2
+      mode: INPUT
+      inverted: true
+  - platform: gpio
+    name: "KC868-A6-IN-4"
+    pin:
+      pcf8574: inputs
+      number: 3
+      mode: INPUT
+      inverted: true
+  - platform: gpio
+    name: "KC868-A6-IN-5"
+    pin:
+      pcf8574: inputs
+      number: 4
+      mode: INPUT
+      inverted: true
+  - platform: gpio
+    name: "KC868-A6-IN-6"
+    pin:
+      pcf8574: inputs
+      number: 5
+      mode: INPUT
+      inverted: true
+
+switch:
+  - platform: gpio
+    name: "KC868-A6-RELAY-1"
+    id: relay_1
+    pin:
+      pcf8574: outputs
+      number: 0
+      mode: OUTPUT
+      inverted: true
+  - platform: gpio
+    name: "KC868-A6-RELAY-2"
+    id: relay_2
+    pin:
+      pcf8574: outputs
+      number: 1
+      mode: OUTPUT
+      inverted: true
+  - platform: gpio
+    name: "KC868-A6-RELAY-3"
+    id: relay_3
+    pin:
+      pcf8574: outputs
+      number: 2
+      mode: OUTPUT
+      inverted: true
+  - platform: gpio
+    name: "KC868-A6-RELAY-4"
+    id: relay_4
+    pin:
+      pcf8574: outputs
+      number: 3
+      mode: OUTPUT
+      inverted: true
+  - platform: gpio
+    name: "KC868-A6-RELAY-5"
+    id: relay_5
+    pin:
+      pcf8574: outputs
+      number: 4
+      mode: OUTPUT
+      inverted: true
+  - platform: gpio
+    name: "KC868-A6-RELAY-6"
+    id: relay_6
+    pin:
+      pcf8574: outputs
+      number: 5
+      mode: OUTPUT
+      inverted: true

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loan Tracker</title> 
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container"> 
+    <h1>Loan Tracker</h1>
+
+    <div id="addEntryModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2 id="modalTitle">Add New Entry</h2> 
+        <form id="addEntryForm">
+          <input type="hidden" id="entryId"> 
+          <label for="itemName">Item Name:</label><br>
+          <input type="text" id="itemName" name="itemName" required><br>
+
+          <label for="personName">Person:</label><br>
+          <input type="text" id="personName" name="personName" required><br>
+
+          <label for="amount">Amount:</label><br>
+          <input type="number" id="amount" name="amount"><br>
+
+          <div class="radio-group">
+            <input type="radio" id="lentToMe" name="direction" value="lentToMe">
+            <label for="lentToMe">Lent to Me</label>
+            <input type="radio" id="lentToThem" name="direction" value="lentToThem">
+            <label for="lentToThem">Lent to Them</label>
+          </div>
+
+          <button type="submit">Save Entry</button>
+        </form>
+      </div>
+    </div>
+
+    <button id="addEntryBtn">Add New Entry</button>
+
+    <table id="loanTable">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Person</th> 
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Actions</th> 
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div> 
+
+  <script src="script.js"></script>
+</body>
+</html>
